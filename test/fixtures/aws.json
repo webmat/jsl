@@ -1,0 +1,96 @@
+{
+    "OwnerId": "927364065875", 
+    "ReservationId": "r-2d507019", 
+    "Groups": [], 
+    "Instances": [
+        {
+            "Monitoring": {
+                "State": "disabled"
+            }, 
+            "PublicDnsName": null, 
+            "KernelId": "aki-fc37bacc", 
+            "State": {
+                "Code": 0, 
+                "Name": "pending"
+            }, 
+            "EbsOptimized": false, 
+            "LaunchTime": "2014-01-16T14:45:13.000Z", 
+            "PrivateIpAddress": "172.31.7.21", 
+            "ProductCodes": [
+                {
+                    "ProductCodeId": "aacglxeowvn5hy8sznltowyqe", 
+                    "ProductCodeType": "marketplace"
+                }
+            ], 
+            "VpcId": "vpc-1d0b7076", 
+            "StateTransitionReason": null, 
+            "InstanceId": "i-810d04b5", 
+            "ImageId": "ami-18395d28", 
+            "PrivateDnsName": "ip-172-31-7-21.us-west-2.compute.internal", 
+            "KeyName": "mathieu-martin", 
+            "SecurityGroups": [
+                {
+                    "GroupName": "cloud-database", 
+                    "GroupId": "sg-e849438a"
+                }
+            ], 
+            "ClientToken": null, 
+            "SubnetId": "subnet-1c0b7077", 
+            "InstanceType": "t1.micro", 
+            "NetworkInterfaces": [
+                {
+                    "Status": "in-use", 
+                    "SourceDestCheck": true, 
+                    "VpcId": "vpc-1d0b7076", 
+                    "Description": null, 
+                    "NetworkInterfaceId": "eni-07073341", 
+                    "PrivateIpAddresses": [
+                        {
+                            "PrivateDnsName": "ip-172-31-7-21.us-west-2.compute.internal", 
+                            "Primary": true, 
+                            "PrivateIpAddress": "172.31.7.21"
+                        }
+                    ], 
+                    "PrivateDnsName": "ip-172-31-7-21.us-west-2.compute.internal", 
+                    "Attachment": {
+                        "Status": "attaching", 
+                        "DeviceIndex": 0, 
+                        "DeleteOnTermination": true, 
+                        "AttachmentId": "eni-attach-61fb0856", 
+                        "AttachTime": "2014-01-16T14:45:13.000Z"
+                    }, 
+                    "Groups": [
+                        {
+                            "GroupName": "cloud-database", 
+                            "GroupId": "sg-e849438a"
+                        }
+                    ], 
+                    "SubnetId": "subnet-1c0b7077", 
+                    "OwnerId": "927364065875", 
+                    "PrivateIpAddress": "172.31.7.21"
+                }
+            ], 
+            "SourceDestCheck": true, 
+            "Placement": {
+                "Tenancy": "default", 
+                "GroupName": null, 
+                "AvailabilityZone": "us-west-2c"
+            }, 
+            "Hypervisor": "xen", 
+            "BlockDeviceMappings": [], 
+            "Architecture": "x86_64", 
+            "StateReason": {
+                "Message": "pending", 
+                "Code": "pending"
+            }, 
+            "IamInstanceProfile": {
+                "Id": "AIPAJCDEWRFIQNNTJAM6A", 
+                "Arn": "arn:aws:iam::927364065875:instance-profile/cloud-database"
+            }, 
+            "RootDeviceName": "/dev/sda1", 
+            "VirtualizationType": "paravirtual", 
+            "RootDeviceType": "ebs", 
+            "AmiLaunchIndex": 0
+        }
+    ]
+}
