@@ -9,6 +9,7 @@ Slice and dice JSON at the command line.
 ## Ideas
 
 - Look at Dir.glob implementation
+- regex instead of glob?
 - SAX-based parser like https://bitbucket.org/webmat/htmlparser.js
 
 ## Usage
