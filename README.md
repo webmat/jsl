@@ -1,10 +1,10 @@
-# Jason
+# jsl
 
 Slice and dice JSON at the command line.
 
 ## Installation
 
-    gem install jason
+    gem install jsl
 
 ## Ideas
 
@@ -14,50 +14,46 @@ Slice and dice JSON at the command line.
 
 ## Usage
 
-    - read key values
-    - reference array locations
-    - read key names
+By default, `jsl` outputs one value per line. Unless --strict is specified,
+it may not be a strict JSON string.
 
-    # ohai outputs information about your machine in JSON.
-    gem install ohai
-    $ ohai | jason /os
+    # Note: ohai outputs information about your machine in JSON.
+    $ gem install ohai
+    $ ohai | jsl /os
     darwin
 
-    # like ls?
-    $ ohai | jason /languages
+    $ aws ec2 run-instances [...] | jsl InstanceId
+    i-beef42
+
+Given
+
+```JSON
+{ "languages"
+, { "ruby": { "version": "2.0.0" }
+  , "nodejs": { "version": "0.10.22" }
+  //...
+  }
+}
+```
+
+    $ ohai | jsl '/languages/*'
+    { "version": "2.0.0" }
+    { "version": "0.10.22" }
+
+    $ ohai | jsl '/languages/*' --keys
     ruby
     nodejs
     perl
     php
     python
 
-    $ ohai | jason -r /languages
-
-    # json output or explicit?
-    $ ohai | jason /languages
-    {
-      "ruby": { "version": "2.0.0", ...},
-      "nodejs": {...}
-      ...
-    }
-
-    $ ohai | jason /languages/*
-    "ruby": { "version": "2.0.0", ...},
-    nodejs
-    perl
-    php
-    python
-
-    $ ohai | jason /languages/(*)
-    ruby
-    nodejs
-    perl
-    php
-    python
+    $ ohai | jsl '/languages/*' --all
+    { "ruby": { "version": "2.0.0", ...} }
+    { "nodejs": {...} }
 
 ## Contributing
 
-1. Fork it ( http://github.com/<my-github-username>/jason/fork )
+1. Fork it ( http://github.com/webmat/jsl/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
