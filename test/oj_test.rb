@@ -23,7 +23,7 @@ class OjTest < Minitest::Test
   attr_reader :aws, :ohai, :small
 
   test "explicit paths" do
-    assert_equal 'i-810d04b5', aws.fetch('/Instances/1/InstanceId')
+    assert_equal 'i-deadbeef', aws.fetch('/Instances/1/InstanceId')
   end
 
   # Missing 2
@@ -68,6 +68,30 @@ class OjTest < Minitest::Test
 
     assert_equal ["o1v1", "o1v2"], glob(doc, '/k1/o1k?').values, '/k1/o1k?'
 
-    assert_equal ["i-810d04b5"], glob(aws, '**/InstanceId').values, '**/InstanceId'
+    assert_equal ["i-deadbeef"], glob(aws, '**/InstanceId').values, '**/InstanceId'
+  end
+
+  def jsl(doc, arg)
+    if '/' == arg[0]
+      g = arg
+    else
+      g = "**/#{arg}"
+    end
+    results = glob(doc, g)
+    results.values
+  end
+
+  test "jsl cli API" do
+    doc = aws
+    assert_equal ["i-deadbeef"], jsl(doc, "InstanceId")
+    assert_equal [], jsl(doc, "/InstanceId")
+    assert_equal ["i-deadbeef"], jsl(doc, "**/InstanceId")
+
+    doc = Oj::Doc.open <<-JSON
+    { "a": { "key": "valueA" }
+    , "b": { "key": "valueB" }
+    }
+    JSON
+    assert_equal ["valueA", "valueB"], jsl(doc, "key")
   end
 end
